@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josh Sylvia Tech - AI Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="module">
+    import OpenAI from 'https://cdn.skypack.dev/openai';
+    window.OpenAI = OpenAI;
+</script>
+    <link rel="stylesheet" href="css/ai.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Search JavaScript - Must load before navigation -->
+    <script src="js/search-functions.js"></script>
+    
+    <!-- Navigation Component -->
+    <div id="navigation-container"></div>
+
+    <!-- AI Hero Section -->
+    <section class="ai-hero">
+        <div class="ai-hero-content">
+            <h1 class="ai-hero-title">AI & Automation Solutions</h1>
+            <p class="ai-hero-subtitle">
+                Harnessing the power of artificial intelligence to build intelligent, scalable solutions for modern challenges
+            </p>
+        </div>
+    </section>
+
+    <!-- ... -->
+    </section>
+
+    <!-- MCP Integration Section -->
+    <section class="mcp-section">
+        <div class="mcp-container">
+            <h2 class="mcp-title">Model Context Protocol (MCP) Integration</h2>
+            <div class="mcp-grid">
+                <div class="mcp-card">
+                    <h3 class="mcp-card-title">MCP Server Status</h3>
+                    <p class="mcp-card-description">
+                        Docker container running MCP server for seamless AI model integration and context management.
+                    </p>
+                    <span class="mcp-status connected">Connected</span>
+                </div>
+                <div class="mcp-card">
+                    <h3 class="mcp-card-title">Available Models</h3>
+                    <p class="mcp-card-description">
+                        Multiple AI models available through MCP protocol for different use cases and specializations.
+                    </p>
+                    <span class="mcp-status connected">Active</span>
+                </div>
+                <div class="mcp-card">
+                    <h3 class="mcp-card-title">Context Management</h3>
+                    <p class="mcp-card-description">
+                        Intelligent context sharing between AI models and applications for consistent, informed responses.
+                    </p>
+                    <span class="mcp-status connected">Enabled</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RAG Implementation Section -->
+    <section class="mcp-section">
+        <div class="mcp-container">
+            <h2 class="mcp-title">Retrieval-Augmented Generation (RAG)</h2>
+            <div class="mcp-grid">
+                <div class="mcp-card">
+                    <h3 class="mcp-card-title">Elastic Search</h3>
+                    <p class="mcp-card-description">
+                        Comprehensive Elastic Search index covering cybersecurity, cloud architecture, DevOps, and AI development with 12+ specialized documents.
+                    </p>
+                    <span class="mcp-status connected">Active</span>
+                </div>
+                <div class="mcp-card">
+                    <h3 class="mcp-card-title">Document Retrieval</h3>
+                    <p class="mcp-card-description">
+                        Intelligent document retrieval system that matches user queries with relevant expertise content using keyword and semantic analysis.
+                    </p>
+                    <span class="mcp-status connected">Enabled</span>
+                </div>
+                <div class="mcp-card">
+                    <h3 class="mcp-card-title">Context-Aware Responses</h3>
+                    <p class="mcp-card-description">
+                        Dynamic system prompts that inject retrieved context into LLM requests for accurate, detailed responses about Josh's technical expertise.
+                    </p>
+                    <span class="mcp-status connected">Optimized</span>
+                </div>
+            </div>
+            
+            <div class="docker-info" style="margin-top: 30px;">
+                <h3 class="docker-title">RAG Architecture</h3>
+                <div class="docker-description">
+                    <strong>Process:</strong> User Query → Document Retrieval → Context Injection → LLM Response<br>
+                    <strong>Knowledge Areas:</strong> Cybersecurity, Cloud Architecture, DevOps, AI Development<br>
+                    <strong>Retrieval Method:</strong> Keyword matching + content analysis + relevance scoring<br>
+                    <strong>Integration:</strong> Real-time context injection with Groq's llama-3.1-8b-instant model<br>
+                    <strong>Performance:</strong> Sub-second document retrieval with enhanced response accuracy
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Section -->
+    <section class="chatbot-section">
+        <div class="chatbot-container">
+            <h2 class="chatbot-title">Interactive AI Assistant</h2>
+            <p class="chatbot-description">
+                Experience the power of AI with our interactive chatbot. Ask questions about technology, get help with coding, or explore AI capabilities.
+            </p>
+            <div class="chatbot-interface">
+                <div class="chat-messages" id="chatMessages">
+                    <div style="text-align: center; color: #666; padding: 20px;">
+                        <i class="fas fa-robot" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <p>AI Assistant is ready to help!</p>
+                        <p style="font-size: 0.9rem; opacity: 0.8;">Connected via Docker container with MCP integration</p>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" class="chat-input-field" id="chatInput" placeholder="Type your message here..." onkeypress="handleKeyPress(event)">
+                    <button class="chat-send-btn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i> Send
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/ai.js"></script>
+
+    <!-- Load Navigation Component -->
+    <script>
+        async function loadNavigation() {
+            try {
+                const response = await fetch('components/navigation.html');
+                const navigationHTML = await response.text();
+                document.getElementById('navigation-container').innerHTML = navigationHTML;
+                
+                // Set active page based on current URL
+                setActiveNavigation();
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+            }
+        }
+        
+        function setActiveNavigation() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            
+            // Remove active classes
+            navLinks.forEach(link => link.classList.remove('active'));
+            sidebarLinks.forEach(link => link.classList.remove('active'));
+            
+            // Add active class to current page links
+            if (currentPage === 'ai.html') {
+                document.querySelector('.nav-link[href="ai.html"]')?.classList.add('active');
+                document.querySelector('.sidebar-link[href="ai.html"]')?.classList.add('active');
+            }
+        }
+        
+        // Load navigation when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadNavigation();
+        });
+    </script>
+
+    <!-- Docker Information Section -->
+    <section class="mcp-section">
+        <div class="mcp-container">
+            <div class="docker-info">
+                <h3 class="docker-title">Docker Container Configuration</h3>
+                <div class="docker-description">
+                    <strong>Container:</strong> josh-sylvia-ai-mcp<br>
+                    <strong>Image:</strong> joshsilvatech/ai-assistant:latest<br>
+                    <strong>Port:</strong> 8080<br>
+                    <strong>Environment:</strong> Production<br>
+                    <strong>MCP Protocol:</strong> v1.0<br>
+                    <strong>Status:</strong> <span style="color: #28a745;">● Running</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

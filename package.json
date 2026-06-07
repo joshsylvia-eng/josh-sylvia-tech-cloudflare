@@ -1,0 +1,23 @@
+{
+  "name": "josh-sylvia-tech-cloudflare",
+  "version": "1.0.0",
+  "description": "Josh Sylvia Tech - AI Chatbot with RAG for Cloudflare Pages",
+  "main": "index.js",
+  "scripts": {
+    "dev": "wrangler pages dev public",
+    "build": "echo 'No build step required for static site'",
+    "deploy": "wrangler pages deploy"
+  },
+  "keywords": [
+    "ai",
+    "chatbot",
+    "cloudflare",
+    "rag",
+    "groq"
+  ],
+  "author": "Josh Sylvia",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

@@ -1,0 +1,5 @@
+# Single page application routing
+/api/* /api/:splat 200
+
+# Redirect to HTTPS (Cloudflare handles this automatically)
+# http://* https://:splat 301

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josh Sylvia Tech Tutorials</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/tutorials.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Search JavaScript - Must load before navigation -->
+    <script src="js/search-functions.js"></script>
+    
+    <!-- Navigation Component -->
+    <div id="navigation-container"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="content-wrapper">
+            <h1 class="page-title">Josh Sylvia Tech Tutorials</h1>
+            <p class="page-description">Learn cybersecurity, DevOps, and cloud computing through step-by-step tutorials and how-to guides for AWS services, Linux security, and infrastructure automation.</p>
+            
+            <!-- Selection Grid -->
+            <div class="selection-grid">
+                <a href="javascript:void(0)" onclick="openTab(event, 'all');" class="tab-link active">
+                    <div class="tab-item">All</div>
+                </a>
+                <a href="javascript:void(0)" onclick="openTab(event, 'videos');" class="tab-link">
+                    <div class="tab-item">Videos</div>
+                </a>
+                <a href="javascript:void(0)" onclick="openTab(event, 'github');" class="tab-link">
+                    <div class="tab-item">GitHub</div>
+                </a>
+                <a href="javascript:void(0)" onclick="openTab(event, 'playground');" class="tab-link">
+                    <div class="tab-item">Playground</div>
+                </a>
+            </div>
+            
+            <div id="content-grid" class="content-grid">
+                <div class="loading-grid">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading content...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="contentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-info">
+                    <p id="modalDescription"></p>
+                    <div class="modal-meta">
+                        <span id="modalLocation"></span>
+                        <span id="modalDate"></span>
+                    </div>
+                    <div id="modalTags" class="modal-tags"></div>
+                    <div class="modal-actions">
+                        <button id="modalExternalLink" class="modal-link-btn" style="display: none;">
+                            <i class="fas fa-external-link-alt"></i> View Original
+                        </button>
+                    </div>
+                </div>
+                <div id="modalMedia"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/tutorials.js?v=36"></script>
+</body>
+</html>

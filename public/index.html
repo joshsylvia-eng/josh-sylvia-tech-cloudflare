@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Josh Sylvia Tech - About Me</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Search JavaScript - Must load before navigation -->
+    <script src="js/search-functions.js"></script>
+
+    <!-- Navigation Component -->
+    <div id="navigation-container"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-left">
+                <img src="images/tikal2.jpg" alt="Tikal Ruins" class="tikal-image">
+                <div class="cta-buttons">
+                    <a href="#story-section" class="cta-button story-button">My Story</a>
+                    <a href="#success-story" class="cta-button story-button">Technical Success Story</a>
+                    <a href="about.html" class="cta-button">Learn More About Me</a>
+                    <a href="tutorials.html" class="cta-button">View My Tutorials</a>
+                    <a href="contact.html" class="cta-button">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <h1 class="hero-title">Josh Sylvia</h1>
+                <p class="hero-subtitle">Principal Software Engineer & Technology Innovator</p>
+                <div class="certification-badge">
+                    <img src="images/CISSP_logo.png" alt="CISSP Logo" class="cert-logo">
+                    <span>Certified Information Systems Security Professional (CISSP)</span>
+                    <div class="cert-details">
+                        <p><strong>Certificate Number:</strong> 2273572</p>
+                        <p><strong>Expires:</strong> May 31, 2028</p>
+                    </div>
+                </div>
+                <p class="hero-description">
+                    A native Alaskan with a passion for building innovative technology solutions that make a real difference in people's lives. From cybersecurity to cloud architecture, I bring technical expertise and creative problem-solving to every challenge. I'm a regular attendee at DEFCON and have extensive experience building and fixing cars, houses, computer hardware, software, networking, and electronic components.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-container">
+            <h2 class="features-title">What I Do</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-code feature-icon"></i>
+                    <h3 class="feature-title">Software Development</h3>
+                    <p class="feature-description">
+                        Creating robust applications with clean code, best practices, and cutting-edge technologies.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3 class="feature-title">Cybersecurity</h3>
+                    <p class="feature-description">
+                        Protecting digital assets and building secure systems that keep businesses safe from evolving threats.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-cloud feature-icon"></i>
+                    <h3 class="feature-title">Cloud Architecture</h3>
+                    <p class="feature-description">
+                        Designing scalable cloud solutions using AWS, Azure, and modern infrastructure practices.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="story-section" class="story-section">
+        <div class="story-container">
+            <h2 class="story-title">My Story</h2>
+            <p class="story-content">
+                Raised in silicon valley taught me the value of resilience, innovation, and community. These principles guide my approach to technology and problem-solving every day. I believe in building solutions that not only work well but also make a positive impact on people's lives.
+            </p>
+            
+            <div class="story-highlight">
+                <div class="video-container">
+                    <video controls class="story-video">
+                        <source src="videos/Engineering Abroad Guatemala 1080.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <p>
+                    One of my most meaningful experiences was leading an engineering project that brought potable water to a remote village outside Antigua, Guatemala. This humanitarian effort combined technical expertise with compassion, showing how technology can truly transform lives and communities in need.
+                </p>
+            </div>
+            
+            <p class="story-content">
+                Today, I continue to apply that same passion for making a difference through my work in cybersecurity, cloud computing, and software development. Whether I'm protecting critical infrastructure, designing scalable systems, or sharing knowledge through tutorials, my goal remains the same: to use technology to create a better, safer, more connected world.
+            </p>
+        </div>
+    </section>
+
+    <!-- Technical Success Story Section -->
+    <section id="success-story" class="story-section">
+        <div class="story-container">
+            <h2 class="story-title">Technical Success Story</h2>
+            <p class="story-content">
+                <strong>Time-critical migration</strong> of 4 active servers under 2.5-month deadline. Resolved <strong>ATO compliance issues</strong>: retired EOL Python 2, CentOS, patched log4j. Chose <strong>Ubuntu</strong> over Rocky/Alma Linux for strong community and LTS support. Used <strong>Apache NiFi</strong> for traffic splitting during parallel testing. Completed cutover <strong>2 days ahead</strong> of hard deadline.
+            </p>
+        </div>
+    </section>
+
+    <!-- Nanook Section -->
+    <section class="nanook-section">
+        <div class="nanook-container">
+            <img src="images/nanook.jpg" alt="Nanook - Siberian Husky" class="nanook-image">
+            <h3 class="nanook-title">Meet Nanook</h3>
+            <p class="nanook-description">
+                My faithful Siberian Husky companion who reminds me daily of the importance of loyalty, adventure, and embracing the wild spirit of Alaska. Nanook is my coding buddy and inspiration for staying curious and exploring new frontiers in technology.
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Load shared navigation component
+        async function loadNavigation() {
+            try {
+                const response = await fetch('components/navigation.html');
+                const navigationHTML = await response.text();
+                document.getElementById('navigation-container').innerHTML = navigationHTML;
+                
+                // Set active page based on current URL
+                setActiveNavigation();
+            } catch (error) {
+                console.error('Error loading navigation:', error);
+            }
+        }
+        
+        // Set active navigation link based on current page
+        function setActiveNavigation() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            
+            // Remove active classes
+            navLinks.forEach(link => link.classList.remove('active'));
+            sidebarLinks.forEach(link => link.classList.remove('active'));
+            
+            // Add active class to current page links
+            if (currentPage === 'index.html' || currentPage === '') {
+                document.querySelector('.nav-link[href="index.html"]')?.classList.add('active');
+                document.querySelector('.sidebar-link[href="index.html"]')?.classList.add('active');
+            } else if (currentPage === 'about.html') {
+                document.querySelector('.nav-link[href="about.html"]')?.classList.add('active');
+                document.querySelector('.sidebar-link[href="about.html"]')?.classList.add('active');
+            } else if (currentPage === 'tutorials.html') {
+                document.querySelector('.nav-link[href="tutorials.html"]')?.classList.add('active');
+                document.querySelector('.sidebar-link[href="tutorials.html"]')?.classList.add('active');
+            } else if (currentPage === 'contact.html') {
+                document.querySelector('.nav-link[href="contact.html"]')?.classList.add('active');
+                document.querySelector('.sidebar-link[href="contact.html"]')?.classList.add('active');
+            }
+        }
+        
+        // Add toggleSidebar function for mobile menu
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('open');
+            }
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const navToggle = document.querySelector('.nav-toggle');
+            
+            if (window.innerWidth <= 768 && 
+                sidebar && 
+                !sidebar.contains(event.target) && 
+                !navToggle.contains(event.target) && 
+                sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+            }
+        });
+
+        // Load navigation when page loads
+        document.addEventListener('DOMContentLoaded', loadNavigation);
+    </script>
+</body>
+</html>
